@@ -1,18 +1,42 @@
-# MetaTrader5 Trading Bot with GPT-4
+This script is a Python trading bot designed to interface with MetaTrader5 (MT5), leveraging OpenAI's API for trading signal analysis and recommendations. Here's a breakdown of its functionality:
 
-This Python project integrates MetaTrader5 with OpenAI's GPT-4 to create a powerful trading bot capable of generating automated trading signals. By analyzing real-time OHLC (Open, High, Low, Close) and tick data from MetaTrader5, the bot provides precise BUY/SELL recommendations, complete with entry points, stop loss, and take profit levels.
+### Key Features and Workflow:
 
-## Overview
+1. **Initialization and Configuration:**
+   - The script loads environment variables (`LOGIN`, `PASSWORD`, `SERVER`) to connect to the MetaTrader5 trading platform securely.
+   - A system prompt is defined to guide the OpenAI model to act as a trading advisor for analyzing financial data and generating trading recommendations.
 
-The MetaTrader5 Trading Bot with GPT-4 is designed to assist traders by automating the decision-making process in financial markets. It leverages the advanced natural language processing capabilities of GPT-4 to interpret and analyze market data, applying sophisticated trading strategies to recommend optimal trading actions. This bot is ideal for traders who want to combine the power of AI with the robust data analysis capabilities of MetaTrader5.
+2. **Trading Signal Analysis:**
+   - The bot pulls OHLC (Open, High, Low, Close) data for a specified trading symbol from MT5.
+   - The data is converted to a JSON format and sent to the OpenAI model for analysis.
+   - The model is expected to return a concise trading signal with an action (`BUY` or `SELL`), entry price (`ENTRY`), stop-loss (`SL`), and take-profit (`TP`) values.
 
-### Key Features
+3. **Order Creation and Execution:**
+   - The script includes a `create_order` function that formats the trading signal into a MetaTrader5 order request.
+   - This request is sent to MT5 using `mt.order_send()` to place the trade.
 
-- **Real-Time Data Analysis**: Continuously retrieves and processes OHLC and tick data from MetaTrader5, ensuring that trading decisions are based on the most up-to-date market information.
-- **Automated Trading Signals**: Generates actionable BUY/SELL recommendations with precise entry, stop loss (SL), and take profit (TP) values.
-- **Advanced AI Integration**: Utilizes OpenAI's GPT-4 to analyze market data and apply trading strategies, enhancing the decision-making process with AI-driven insights.
-- **Customizable Strategy**: The bot can be tailored to specific trading strategies as outlined in a provided strategy document, allowing users to align the bot's recommendations with their own trading philosophy.
-- **Robust and Scalable**: Designed to handle a wide range of trading scenarios, from high-frequency trading to long-term investment strategies.
+4. **Interactive Trading:**
+   - The bot operates in a loop where it asks the user for a trading symbol and processes data until the user opts to exit.
 
-### To Do
-- **Integrate with Rust for faster runtime**
+5. **Error Handling and Validation:**
+   - If the OpenAI model doesn't return valid trading signals (`ENTRY`, `SL`, `TP`), the script alerts the user.
+   - The bot validates responses and ensures they are in the correct format before sending orders to MT5.
+
+6. **Shut Down:**
+   - After the user exits the loop, the bot disconnects from MetaTrader5.
+
+---
+
+### Dependencies:
+- **MetaTrader5 Library (`MetaTrader5`):** Used to fetch market data and execute trades.
+- **OpenAI API (`openai`):** Provides trading recommendations based on the system prompt and input data.
+- **Pandas (`pd`):** For managing and processing OHLC data.
+- **Plotly (`plotly.express`):** Imported but not used in the script (possibly for future visualization).
+- **Dotenv (`load_dotenv`):** For securely managing login credentials.
+
+---
+
+### Potential Use Cases:
+- Automating trading strategies based on AI-generated recommendations.
+- Backtesting AI-driven strategies using historical data.
+- Real-time analysis and execution of trades.
