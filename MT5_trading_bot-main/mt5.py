@@ -9,7 +9,7 @@ import openai
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI()
+client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
 login = os.getenv("LOGIN")
 password = os.getenv("PASSWORD")
 server = os.getenv("SERVER")
