@@ -1,43 +1,17 @@
-# Voice Assistant Frontend
+# Trading Bot Frontend
 
-The Voice Assistant Frontend is a modern web-based interface for a voice assistant, built using Vue.js and Webpack. It serves as the bridge between users and the backend, facilitating seamless communication, response visualization, and configuration management.
+A lightweight and dynamic frontend for a trading bot, built with Vue.js. This application provides an intuitive user interface to monitor trades, manage settings, and connect to various trading APIs.
 
-## Overview
+## Features
+- **API Integration**: Supports connecting to multiple trading platforms via configurable APIs.
+- **Real-Time Data**: Displays live trading data and updates dynamically.
+- **Customizable Settings**: Allows users to configure trading parameters and preferences.
 
-This application is responsible for:
-- **User Interaction**: Captures user input and displays processed responses in real-time.
-- **Settings Management**: Provides interfaces for adjusting voice assistant configurations.
-- **Dynamic Updates**: Supports hot module replacement for fast updates during development.
+## Architecture
+- **Core**: Built with Vue.js for a responsive and modular UI.
+- **State Management**: Uses Vuex to handle trading data and user settings.
+- **Routing**: Powered by Vue Router for seamless navigation.
+- **Styling**: Tailwind CSS ensures a clean, utility-first design.
 
-## Key Components
-
-### Core Application
-- **Entry Point (`main.js`)**: Initializes the Vue.js app and mounts it to the DOM.
-- **Root Component (`App.vue`)**: Provides the base layout and orchestrates child components.
-- **Router (`src/router/index.js`)**: Defines navigation between views, enabling a multi-page experience.
-- **State Management (`src/store/index.js`)**: Uses Vuex to handle global application state, including settings, user preferences, and session data.
-
-### Interface Components
-- **Dynamic UI (`src/components/`)**: Reusable Vue components for rendering user input fields, response displays, and settings panels.
-- **Assets and Styling (`src/assets/` and `src/styles/`)**: Centralized location for static files and Tailwind CSS-based styles for rapid UI prototyping.
-
-### Utility Modules
-- **Locale Management (`src/locale/`)**: Handles i18n for multilingual support.
-- **Utility Functions (`src/libs/util.js`)**: Contains helper functions for tasks such as API request handling and input validation.
-
-## Build System
-
-### Webpack Configuration
-- **Base (`webpack.base.config.js`)**: Shared configuration for development and production, defining loaders and plugins.
-- **Development (`webpack.dev.config.js`)**: Adds tools like hot module replacement for an enhanced development experience.
-- **Production (`webpack.prod.config.js`)**: Optimizes the build for performance with code splitting, minification, and asset compression.
-
-### PostCSS and Tailwind CSS
-- **PostCSS (`postcss.config.mjs`)**: Used for CSS processing and plugin support.
-- **Tailwind Configuration (`tailwind.config.js`)**: Provides utility-first styling and theming.
-
-## Functionality
-
-1. **Frontend-Backend Communication**: Acts as a client-side bridge, sending user inputs to the backend and rendering real-time responses.
-2. **Configurable Settings**: Exposes advanced controls for adjusting assistant behaviors and preferences.
-3. **Scalable Component Design**: Uses a modular structure for easy feature extension and maintenance.
+## License
+Licensed under MIT. See `LICENSE` for details.
